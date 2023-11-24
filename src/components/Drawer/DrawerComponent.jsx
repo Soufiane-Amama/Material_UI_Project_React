@@ -7,8 +7,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Home, Create, Person, Settings, Logout } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const DrawerComponent = ({ drawerWidth }) => {
+  const navigate = useNavigate();
+
   return (
     <Drawer
       sx={{
@@ -27,7 +30,7 @@ const DrawerComponent = ({ drawerWidth }) => {
 
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={()=>{navigate("/")}}>
             <ListItemIcon>
               <Home />
             </ListItemIcon>
@@ -36,7 +39,7 @@ const DrawerComponent = ({ drawerWidth }) => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={()=>{navigate("/create")}}>
             <ListItemIcon>
               <Create />
             </ListItemIcon>
@@ -45,7 +48,7 @@ const DrawerComponent = ({ drawerWidth }) => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={()=>{navigate("/profile")}}>
             <ListItemIcon>
               <Person />
             </ListItemIcon>
@@ -54,7 +57,7 @@ const DrawerComponent = ({ drawerWidth }) => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={()=>{navigate("/settings")}}>
             <ListItemIcon>
               <Settings />
             </ListItemIcon>
@@ -63,7 +66,7 @@ const DrawerComponent = ({ drawerWidth }) => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={()=>{navigate("/logout")}}>
             <ListItemIcon>
               <Logout />
             </ListItemIcon>
