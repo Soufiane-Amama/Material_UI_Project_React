@@ -1,10 +1,11 @@
 import { AppBar, Toolbar, Avatar, Link, Typography } from '@mui/material';
 import myPhoto from "../../images/photo.jpg"
 
-const Appbar = () => {
+
+const AppBarComponent = ({ drawerWidth }) => {
 
   return ( 
-    <AppBar position="static">
+    <AppBar  sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} position="static">
     <Toolbar>
       <Link href="/" color="inherit" underline='none' sx={{ flexGrow: 1, "&:hover": {fontSize: "16.5px"} }} >
         My Expenses
@@ -17,11 +18,11 @@ const Appbar = () => {
       <Avatar
         alt="Soufiqne Amama"
         src={myPhoto}
-        sx={{ width: 50, height: 50 }}
+        sx={{ width: 45, height: 45 }}
       />
     </Toolbar>
   </AppBar>
   )
 }
 
-export default Appbar
+export default AppBarComponent
