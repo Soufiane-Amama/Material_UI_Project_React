@@ -32,8 +32,12 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
       anchor="left"
     >
       <Toolbar sx={{display: "flex", justifyContent: "center"}}>
-      <IconButton sx={{ ml: 1 }} onClick={()=>{ theme.palette.mode === "dark"? setMode("light") : setMode("dark")}} color="inherit">
-        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      <IconButton sx={{ ml: 1 }} 
+        onClick={()=>{ 
+          localStorage.setItem("currentMode", theme.palette.mode === "dark"? "light" : "dark");
+          theme.palette.mode === "dark"? setMode("light") : setMode("dark");
+          }} color="inherit">
+        {theme.palette.mode === 'dark' ? <Brightness7Icon sx={{color: "orange"}} /> : <Brightness4Icon />}
       </IconButton>
       </Toolbar>
 

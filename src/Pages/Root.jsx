@@ -9,7 +9,13 @@ import { blue } from "@mui/material/colors";
 const drawerWidth = 240;
 
 const Root = () => {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState(
+    localStorage.getItem("currentMode") === null
+      ? "dark"
+      : localStorage.getItem("currentMode") === "dark"
+      ? "dark"
+      : "light"
+  );
 
   // Dark Mode
   const darkTheme = createTheme({
@@ -21,7 +27,6 @@ const Root = () => {
         light: blue[300],
         main: blue[500],
         dark: blue[700],
-        darker: blue[900],
       },
     },
   });
@@ -29,15 +34,23 @@ const Root = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div>
-        <DrawerComponent 
-          drawerWidth={drawerWidth} 
+        <DrawerComponent
+          drawerWidth={drawerWidth}
           // @ts-ignore
-          setMode={setMode} 
+          setMode={setMode}
         />
         <AppBarComponent drawerWidth={drawerWidth} />
-        
+
         <CssBaseline />
-        <Box component="main" sx={{ml: `${drawerWidth}px`, display: "flex", justifyContent: "center", mt: "66px",}}>
+        <Box
+          component="main"
+          sx={{
+            ml: `${drawerWidth}px`,
+            display: "flex",
+            justifyContent: "center",
+            mt: "66px",
+          }}
+        >
           <Outlet />
         </Box>
       </div>

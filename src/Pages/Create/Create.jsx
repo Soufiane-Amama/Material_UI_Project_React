@@ -10,7 +10,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.soufiane.main,
   '&:hover': {
     // @ts-ignore
-    backgroundColor: theme.palette.soufiane.light,
+    backgroundColor: theme.palette.soufiane.dark,
   },
 }));
 
