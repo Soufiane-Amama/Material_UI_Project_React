@@ -1,4 +1,3 @@
-
 import AppBarComponent from 'components/AppBar/AppBarComponent';
 import DrawerComponent from 'components/Drawer/DrawerComponent';
 import { Outlet } from 'react-router-dom';
@@ -12,7 +11,7 @@ const Root = () => {
       <DrawerComponent drawerWidth={drawerWidth} />
       <AppBarComponent drawerWidth={drawerWidth}  />
 
-      <Box sx={{ ml: `${drawerWidth}px`, display: "flex", justifyContent: "center" }} >
+      <Box sx={{ ml: `${drawerWidth}px`, display: "flex", justifyContent: "center", mt: "66px" }} >
         <Outlet />
       </Box>
     </div>
