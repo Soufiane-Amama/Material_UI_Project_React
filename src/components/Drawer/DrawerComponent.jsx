@@ -8,9 +8,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Home, Create, Person, Settings, Logout } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { IconButton } from "@mui/material";
+// Dark Mode
+import { useTheme } from '@mui/material/styles';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
-const DrawerComponent = ({ drawerWidth }) => {
+const DrawerComponent = ({ drawerWidth, setMode }) => {
   const navigate = useNavigate();
+  const theme = useTheme();
 
   return (
     <Drawer
@@ -25,7 +31,12 @@ const DrawerComponent = ({ drawerWidth }) => {
       variant="permanent"
       anchor="left"
     >
-      <Toolbar />
+      <Toolbar sx={{display: "flex", justifyContent: "center"}}>
+      <IconButton sx={{ ml: 1 }} onClick={()=>{ theme.palette.mode === "dark"? setMode("light") : setMode("dark")}} color="inherit">
+        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
+      </Toolbar>
+
       <Divider />
 
       <List>

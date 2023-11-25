@@ -1,21 +1,48 @@
-import AppBarComponent from 'components/AppBar/AppBarComponent';
-import DrawerComponent from 'components/Drawer/DrawerComponent';
-import { Outlet } from 'react-router-dom';
-import { Box } from '@mui/material';
+import AppBarComponent from "components/AppBar/AppBarComponent";
+import DrawerComponent from "components/Drawer/DrawerComponent";
+import { Outlet } from "react-router-dom";
+import { useState } from "react";
+// Dark Mode
+import { Box, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 const drawerWidth = 240;
 
 const Root = () => {
+  const [mode, setMode] = useState("dark");
+
+  // Dark Mode
+  const darkTheme = createTheme({
+    palette: {
+      // @ts-ignore
+      mode: mode,
+      // @ts-ignore
+      soufiane: {
+        light: blue[300],
+        main: blue[500],
+        dark: blue[700],
+        darker: blue[900],
+      },
+    },
+  });
+
   return (
-    <div>
-      <DrawerComponent drawerWidth={drawerWidth} />
-      <AppBarComponent drawerWidth={drawerWidth}  />
+    <ThemeProvider theme={darkTheme}>
+      <div>
+        <DrawerComponent 
+          drawerWidth={drawerWidth} 
+          // @ts-ignore
+          setMode={setMode} 
+        />
+        <AppBarComponent drawerWidth={drawerWidth} />
+        
+        <CssBaseline />
+        <Box component="main" sx={{ml: `${drawerWidth}px`, display: "flex", justifyContent: "center", mt: "66px",}}>
+          <Outlet />
+        </Box>
+      </div>
+    </ThemeProvider>
+  );
+};
 
-      <Box component="main" sx={{ ml: `${drawerWidth}px`, display: "flex", justifyContent: "center", mt: "66px" }} >
-        <Outlet />
-      </Box>
-    </div>
-  )
-}
-
-export default Root
+export default Root;
