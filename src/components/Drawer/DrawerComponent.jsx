@@ -14,7 +14,7 @@ import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
-const DrawerComponent = ({ drawerWidth, setMode }) => {
+const DrawerComponent = ({ drawerWidth, setMode, noneORblock, setNoneORblock, drawerType, setdrawerType }) => {
   const navigate = useNavigate();
   const theme = useTheme();
   const select = useLocation();
@@ -22,11 +22,7 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
   return (
     <Drawer
       sx={{
-        // display: {xs: "none", sm: "block"},
-        [theme.breakpoints.down('md')]: {
-          backgroundColor: theme.palette.secondary.main,
-        },
-
+        display: {xs: noneORblock, sm: "block"},
         width: `${drawerWidth}px`,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
@@ -34,7 +30,12 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
           boxSizing: "border-box",
         },
       }}
-      variant="permanent"
+      variant={drawerType}
+      open={true}
+      onClose={()=>{ 
+        setdrawerType("permanent") 
+        setNoneORblock("none") 
+      }}
       anchor="left"
     >
       <Toolbar sx={{display: "flex", justifyContent: "center"}}>

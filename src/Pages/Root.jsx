@@ -16,6 +16,8 @@ const Root = () => {
       ? "dark"
       : "light"
   );
+  const [noneORblock, setNoneORblock] = useState("none");
+  const [drawerType, setdrawerType] = useState("permanent");
 
   // Dark Mode
   const darkTheme = createTheme({
@@ -53,14 +55,26 @@ const Root = () => {
           drawerWidth={drawerWidth}
           // @ts-ignore
           setMode={setMode}
+          noneORblock={noneORblock}
+          // @ts-ignore
+          drawerType={drawerType}
+          setNoneORblock={setNoneORblock} 
+          setdrawerType={setdrawerType}        
         />
-        <AppBarComponent drawerWidth={drawerWidth} />
+
+        <AppBarComponent 
+          drawerWidth={drawerWidth} 
+          // @ts-ignore
+          setNoneORblock={setNoneORblock} 
+          // @ts-ignore
+          setdrawerType={setdrawerType}
+          />
 
         <CssBaseline />
         <Box
           component="main"
           sx={{
-            ml: `${drawerWidth}px`,
+            ml: {sm: `${drawerWidth}px`},
             display: "flex",
             justifyContent: "center",
             mt: "66px",
