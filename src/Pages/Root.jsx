@@ -1,7 +1,8 @@
-// @ts-nocheck
+
 import AppBarComponent from 'components/AppBar/AppBarComponent';
 import DrawerComponent from 'components/Drawer/DrawerComponent';
 import { Outlet } from 'react-router-dom';
+import { Box } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -11,7 +12,9 @@ const Root = () => {
       <DrawerComponent drawerWidth={drawerWidth} />
       <AppBarComponent drawerWidth={drawerWidth}  />
 
-      <Outlet />
+      <Box sx={{ ml: `${drawerWidth}px`, display: "flex", justifyContent: "center" }} >
+        <Outlet />
+      </Box>
     </div>
   )
 }
