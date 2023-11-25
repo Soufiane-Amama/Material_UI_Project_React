@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 // Dark Mode
 import { Box, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { blue, purple } from "@mui/material/colors";
 
 const drawerWidth = 240;
 
@@ -21,13 +21,22 @@ const Root = () => {
   const darkTheme = createTheme({
     palette: {
       // @ts-ignore
-      mode: mode,
-      // @ts-ignore
-      soufiane: {
-        light: blue[300], 
-        main: blue[500],
-        dark: blue[700],
-      },
+      mode,
+      ...(mode === 'light'
+        ? {
+            // palette values for light mode
+            soufiane: {
+              main: blue[500],
+              dark: blue[700],
+            },
+          }
+        : {
+            // palette values for dark mode
+            soufiane: {
+              main: purple[500],
+              dark: purple[700],
+            },
+          }),
     },
   });
 
