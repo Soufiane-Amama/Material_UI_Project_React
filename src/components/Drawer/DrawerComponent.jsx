@@ -7,7 +7,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Home, Create, Person, Settings, Logout } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
 // Dark Mode
 import { useTheme } from '@mui/material/styles';
@@ -17,6 +17,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 const DrawerComponent = ({ drawerWidth, setMode }) => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const select = useLocation();
 
   return (
     <Drawer
@@ -44,7 +45,11 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
       <Divider />
 
       <List>
-        <ListItem disablePadding>
+        <ListItem 
+          // @ts-ignore
+          sx={{bgcolor: select.pathname === "/"? theme.palette.favColor.main : null}} 
+          disablePadding
+        >
           <ListItemButton onClick={()=>{navigate("/")}}>
             <ListItemIcon>
               <Home />
@@ -53,7 +58,11 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
+        <ListItem         
+          // @ts-ignore
+          sx={{bgcolor: select.pathname === "/create"? theme.palette.favColor.main : null}}  
+          disablePadding
+        >
           <ListItemButton onClick={()=>{navigate("/create")}}>
             <ListItemIcon>
               <Create />
