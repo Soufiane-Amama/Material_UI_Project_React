@@ -22,6 +22,11 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
   return (
     <Drawer
       sx={{
+        // display: {xs: "none", sm: "block"},
+        [theme.breakpoints.down('md')]: {
+          backgroundColor: theme.palette.secondary.main,
+        },
+
         width: `${drawerWidth}px`,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
@@ -71,7 +76,11 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
+        <ListItem 
+          // @ts-ignore
+          sx={{bgcolor: select.pathname === "/profile"? theme.palette.favColor.main : null}} 
+          disablePadding
+        >
           <ListItemButton onClick={()=>{navigate("/profile")}}>
             <ListItemIcon>
               <Person />
@@ -80,7 +89,11 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
+        <ListItem 
+          // @ts-ignore
+          sx={{bgcolor: select.pathname === "/settings"? theme.palette.favColor.main : null}} 
+          disablePadding
+        >
           <ListItemButton onClick={()=>{navigate("/settings")}}>
             <ListItemIcon>
               <Settings />
@@ -89,7 +102,11 @@ const DrawerComponent = ({ drawerWidth, setMode }) => {
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
+        <ListItem 
+          // @ts-ignore
+          sx={{bgcolor: select.pathname === "/logout"? theme.palette.favColor.main : null}} 
+          disablePadding
+        >
           <ListItemButton onClick={()=>{navigate("/logout")}}>
             <ListItemIcon>
               <Logout />
