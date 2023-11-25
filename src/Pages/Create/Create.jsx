@@ -16,7 +16,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
 const Create = () => {
   return (
     <Box component="form" sx={{width: "380px"}}>
-        <TextField
+        <TextField 
           fullWidth={true}
           label="Transaction Title"
           sx={{ mt: "22px", display: "block" }}
