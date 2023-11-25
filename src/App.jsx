@@ -1,6 +1,7 @@
 import Home from "Pages/Home/Home";
 import Root from "./Pages/Root";
 import Create from "Pages/Create/Create";
+import NotFound from "Pages/NotFound/NotFound";
 
 import {
   createBrowserRouter,
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root/>}>
       <Route index element={<Home />} />
       <Route path="create" element={<Create />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

@@ -1,36 +1,29 @@
-import { Create, Home, Logout, Person, Settings } from "@mui/icons-material";
-import { ListItemIcon } from "@mui/material";
+import { Create, Home, Person, Settings } from "@mui/icons-material";
 
 const list = [
     {
         id: 1,
         text: "Home",
-        icon: <ListItemIcon> <Home /> </ListItemIcon>,
+        icon: <Home />,
         path: "/"
     },
     {
         id: 2,
         text: "Create",
-        icon: <ListItemIcon> <Create /> </ListItemIcon>,
+        icon: <Create />,
         path: "/create"
     },
     {
         id: 3,
         text: "Profile",
-        icon:  <ListItemIcon> <Person /> </ListItemIcon>,
+        icon: <Person />,
         path: "/profile"
     },
     {
         id: 4,
         text: "Settings",
-        icon:  <ListItemIcon> <Settings /> </ListItemIcon>,
+        icon: <Settings />,
         path: "/settings"
-    },
-    {
-        id: 5,
-        text: "Logout",
-        icon:  <ListItemIcon> <Logout /> </ListItemIcon>,
-        path: "/logout"
     },
 ];
 

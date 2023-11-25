@@ -6,12 +6,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useLocation, useNavigate } from "react-router-dom";
-import { IconButton } from "@mui/material";
+import { IconButton, ListItemIcon } from "@mui/material";
 // Dark Mode
 import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import list from "data/MyList";
+import { Logout } from "@mui/icons-material";
 
 const DrawerComponent = ({ drawerWidth, setMode, noneORblock, drawerType, hideDrawer }) => {
   const navigate = useNavigate();
@@ -53,17 +54,32 @@ const DrawerComponent = ({ drawerWidth, setMode, noneORblock, drawerType, hideDr
         {
           list.map(item => (
             <ListItem 
+            key={item.id}
             // @ts-ignore
             sx={{bgcolor: select.pathname === item.path ? theme.palette.favColor.main : null}} 
             disablePadding
           >
             <ListItemButton onClick={()=>{navigate(item.path)}}>
-              {item.icon}
+            <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
           ))
         }
+
+
+        <ListItem 
+          // @ts-ignore
+          sx={{bgcolor: select.pathname === "/logout"? theme.palette.favColor.main : null}} 
+          disablePadding
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <Logout />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Drawer>
   );
