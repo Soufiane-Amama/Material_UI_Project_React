@@ -24,7 +24,7 @@ const Root = () => {
       mode: mode,
       // @ts-ignore
       soufiane: {
-        light: blue[300],
+        light: blue[300], 
         main: blue[500],
         dark: blue[700],
       },
