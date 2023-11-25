@@ -2,13 +2,16 @@ import Home from "Pages/Home/Home";
 import Root from "./Pages/Root";
 import Create from "Pages/Create/Create";
 
-
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
+
+// Dark Mode
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { CssBaseline } from "@mui/material";
 
 
 const router = createBrowserRouter(
@@ -20,10 +23,20 @@ const router = createBrowserRouter(
   )
 );
 
+// Dark Mode
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark'
+  },
+});
+
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 
