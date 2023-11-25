@@ -1,10 +1,10 @@
 import AppBarComponent from "components/AppBar/AppBarComponent";
 import DrawerComponent from "components/Drawer/DrawerComponent";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 // Dark Mode
 import { Box, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { blue, grey, purple } from "@mui/material/colors";
+import getTheme from "styles/MyTheme";
 
 const drawerWidth = 240;
 
@@ -20,33 +20,8 @@ const Root = () => {
   const [drawerType, setdrawerType] = useState("permanent");
 
   // Dark Mode
-  const darkTheme = createTheme({
-    palette: {
-      // @ts-ignore
-      mode,
-      ...(mode === 'light'
-        ? {
-            // palette values for light mode
-            soufiane: {
-              main: blue[500],
-              dark: blue[700],
-            },
-            favColor: {
-              main: grey[300]
-            },
-          }
-        : {
-            // palette values for dark mode
-            soufiane: {
-              main: purple[500],
-              dark: purple[700],
-            },
-            favColor: {
-              main: grey[900]
-            },
-          }),
-    },
-  });
+  const theme = useMemo(() => createTheme(getTheme(mode)), [mode]);
+
 
   const showDrawer = () => {
     setdrawerType("temporary");
@@ -59,7 +34,7 @@ const Root = () => {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <div>
         <DrawerComponent
           drawerWidth={drawerWidth}
