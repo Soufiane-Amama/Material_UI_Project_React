@@ -48,6 +48,16 @@ const Root = () => {
     },
   });
 
+  const showDrawer = () => {
+    setdrawerType("temporary");
+    setNoneORblock("block");
+  };
+
+  const hideDrawer = () => {
+    setdrawerType("permanent");
+    setNoneORblock("none");
+  };
+
   return (
     <ThemeProvider theme={darkTheme}>
       <div>
@@ -57,17 +67,13 @@ const Root = () => {
           setMode={setMode}
           noneORblock={noneORblock}
           // @ts-ignore
-          drawerType={drawerType}
-          setNoneORblock={setNoneORblock} 
-          setdrawerType={setdrawerType}        
+          drawerType={drawerType} 
+          hideDrawer={hideDrawer}            
         />
 
         <AppBarComponent 
-          drawerWidth={drawerWidth} 
-          // @ts-ignore
-          setNoneORblock={setNoneORblock} 
-          // @ts-ignore
-          setdrawerType={setdrawerType}
+          drawerWidth={drawerWidth}
+          showDrawer={showDrawer}          
           />
 
         <CssBaseline />

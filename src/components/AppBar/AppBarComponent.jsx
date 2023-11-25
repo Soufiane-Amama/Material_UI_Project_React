@@ -10,7 +10,7 @@ import {
 import myPhoto from "../../images/photo.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const AppBarComponent = ({ drawerWidth, setNoneORblock, setdrawerType }) => {
+const AppBarComponent = ({ drawerWidth, showDrawer }) => {
   const theme = useTheme();
 
   return (
@@ -25,11 +25,10 @@ const AppBarComponent = ({ drawerWidth, setNoneORblock, setdrawerType }) => {
     >
       <Toolbar>
         <IconButton
-          sx={{ display: { sm: "none" } }}
+          sx={{ mr: "9px", display: { sm: "none" } }}
           color="inherit"
           onClick={() => {
-            setdrawerType("temporary");
-            setNoneORblock("block");
+            showDrawer();
           }}
         >
           <MenuIcon />

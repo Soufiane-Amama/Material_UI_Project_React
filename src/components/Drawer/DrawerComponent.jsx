@@ -14,7 +14,7 @@ import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
-const DrawerComponent = ({ drawerWidth, setMode, noneORblock, setNoneORblock, drawerType, setdrawerType }) => {
+const DrawerComponent = ({ drawerWidth, setMode, noneORblock, drawerType, hideDrawer }) => {
   const navigate = useNavigate();
   const theme = useTheme();
   const select = useLocation();
@@ -33,8 +33,7 @@ const DrawerComponent = ({ drawerWidth, setMode, noneORblock, setNoneORblock, dr
       variant={drawerType}
       open={true}
       onClose={()=>{ 
-        setdrawerType("permanent") 
-        setNoneORblock("none") 
+        hideDrawer();
       }}
       anchor="left"
     >
