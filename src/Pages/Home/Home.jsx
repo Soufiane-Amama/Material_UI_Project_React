@@ -10,7 +10,19 @@ const Home = () => {
       fetch("http://localhost:3100/mydata")
       .then((response) => response.json())
       .then((data) => setMydata(data));
-  }, [mydata]);
+  }, []);
+
+  const handleDelete = (item) => {
+    fetch(`http://localhost:3100/mydata/${item.id}`, {
+      method: "DELETE",
+    });
+
+    const newArr = mydata.filter((myObject) => {
+      return myObject.id !== item.id;
+    });
+
+    setMydata(newArr);
+  }
 
 
   let totalPrice = 0;
@@ -25,9 +37,9 @@ const Home = () => {
           <span className="bar"></span>
         </div> 
         :
-        mydata.map(item => (
-          <>
-          {totalPrice += item.price}
+        mydata.map(item =>{ 
+          totalPrice += item.price;
+          return (
           <Paper
           key={item.id}
           sx={{
@@ -59,22 +71,24 @@ const Home = () => {
 
         <IconButton 
           onClick={() => {
-            fetch(`http://localhost:3100/mydata/${item.id}`, { method: "DELETE" });
-          }} 
+            handleDelete(item)
+          }}
           sx={{ position: "absolute", top: "0", right: "0" }}
         >
           <Close sx={{fontSize: "20px"}} />
         </IconButton>
 
           </Paper>
-          </>
-        ))
+          );
+          })
       }
 
-      
-      <Typography mt="55px" textAlign="center" variant="h6">
+      {
+        mydata.length > 0 &&
+        <Typography mt="55px" textAlign="center" variant="h6">
         👉 You Spend ${totalPrice}
-      </Typography>
+        </Typography>
+      }
 
     </Box>
   );
