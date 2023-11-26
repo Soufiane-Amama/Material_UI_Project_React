@@ -1,0 +1,4 @@
+
+امر لتشغيل المحاكي لقاعدة البيانات json-server بعد تحميله
+
+// json-server --watch data/db.json --port 3100
