@@ -25,7 +25,7 @@ const Create = () => {
 
 
   return (
-    <Box component="form" sx={{width: "380px"}}>
+    <Box autoComplete="off" component="form" sx={{width: "380px"}}>
         <TextField
           onChange={(e) => {
             settitle(e.target.value);
