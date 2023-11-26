@@ -3,6 +3,7 @@ import "./Create.css";
 import { purple } from "@mui/material/colors";
 import { ChevronRight } from "@mui/icons-material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const ColorButton = styled(Button)(({ theme }) => ({
@@ -19,6 +20,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
 const Create = () => {
   const [title, settitle] = useState("");
   const [price, setprice] = useState(0);
+
+  const navigate = useNavigate();
 
 
   return (
@@ -57,6 +60,9 @@ const Create = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({title, price})
+    })
+    .then(()=>{
+      navigate("/");
     })
   }} 
   sx={{mt: "22px"}} 
