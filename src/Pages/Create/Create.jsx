@@ -2,6 +2,7 @@ import { Box, Button, InputAdornment, TextField, styled } from "@mui/material";
 import "./Create.css";
 import { purple } from "@mui/material/colors";
 import { ChevronRight } from "@mui/icons-material";
+import { useState } from "react";
 
 
 const ColorButton = styled(Button)(({ theme }) => ({
@@ -16,9 +17,16 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 
 const Create = () => {
+  const [title, settitle] = useState("");
+  const [price, setprice] = useState(0);
+
+
   return (
     <Box component="form" sx={{width: "380px"}}>
         <TextField
+          onChange={(e) => {
+            settitle(e.target.value);
+          }}
           fullWidth={true}
           label="Transaction Title"
           sx={{ mt: "22px", display: "block" }}
@@ -29,6 +37,9 @@ const Create = () => {
         />
 
         <TextField
+          onChange={(e) => {
+            setprice(Number(e.target.value));
+          }}
           fullWidth={true}
           label="Amount"
           sx={{ mt: "22px", display: "block" }}
@@ -38,7 +49,22 @@ const Create = () => {
           variant="filled"
         />
 
-<ColorButton sx={{mt: "22px"}} variant="contained">Submit <ChevronRight /> </ColorButton>
+<ColorButton 
+  onClick={()=>{
+    fetch("http://localhost:3100/mydata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({title, price})
+    })
+  }} 
+  sx={{mt: "22px"}} 
+  variant="contained"
+>
+    Submit <ChevronRight /> 
+</ColorButton>
+
     </Box>
   )
 }
