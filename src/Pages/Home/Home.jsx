@@ -10,8 +10,10 @@ const Home = () => {
       fetch("http://localhost:3100/mydata")
       .then((response) => response.json())
       .then((data) => setMydata(data));
-  }, []);
+  }, [mydata]);
 
+
+  let totalPrice = 0;
 
   return (
     <Box>
@@ -24,6 +26,8 @@ const Home = () => {
         </div> 
         :
         mydata.map(item => (
+          <>
+          {totalPrice += item.price}
           <Paper
           key={item.id}
           sx={{
@@ -63,8 +67,15 @@ const Home = () => {
         </IconButton>
 
           </Paper>
+          </>
         ))
       }
+
+      
+      <Typography mt="55px" textAlign="center" variant="h6">
+        👉 You Spend ${totalPrice}
+      </Typography>
+
     </Box>
   );
 };

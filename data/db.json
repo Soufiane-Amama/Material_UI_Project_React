@@ -1,16 +1,6 @@
 {
   "mydata": [
     {
-      "title": "food",
-      "price": 15,
-      "id": 1
-    },
-    {
-      "title": "fesh",
-      "price": 14,
-      "id": 3
-    },
-    {
       "title": "GYM",
       "price": 100,
       "id": 4
@@ -21,9 +11,9 @@
       "id": 5
     },
     {
-      "title": "food",
-      "price": 50,
-      "id": 7
+      "title": "Food",
+      "price": 100,
+      "id": 6
     }
   ]
 }
