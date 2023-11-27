@@ -54,7 +54,7 @@ const Create = () => {
 
 <ColorButton 
   onClick={()=>{
-    fetch("http://localhost:3100/myData", {
+    fetch("https://mui-project-server.onrender.com/myData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

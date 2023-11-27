@@ -7,13 +7,13 @@ const Home = () => {
   const [myData, setMyData] = useState([]);
 
   useEffect(()=>{
-      fetch("http://localhost:3100/myData")
+      fetch("https://mui-project-server.onrender.com/myData")
       .then((response) => response.json())
       .then((data) => setMyData(data));
   }, []);
 
   const handleDelete = (item) => {
-    fetch(`http://localhost:3100/myData/${item.id}`, {
+    fetch(`https://mui-project-server.onrender.com/myData/${item.id}`, {
       method: "DELETE",
     });
 
