@@ -15,6 +15,9 @@ const getTheme = (mode) => ({
               favColor: {
                 main: grey[300]
               },
+              loader: {
+                main: grey[900]
+              },
             }
           : {
               // palette values for dark mode
@@ -24,6 +27,9 @@ const getTheme = (mode) => ({
               },
               favColor: {
                 main: grey[900]
+              },
+              loader: {
+                main: grey[400]
               },
             }),
       },
