@@ -36,6 +36,7 @@ const Root = () => {
   return (
     <ThemeProvider theme={theme}>
       <div>
+        {/* 
         <DrawerComponent
           drawerWidth={drawerWidth}
           // @ts-ignore
@@ -44,7 +45,11 @@ const Root = () => {
           // @ts-ignore
           drawerType={drawerType} 
           hideDrawer={hideDrawer}            
-        />
+        /> 
+        يمكنك اختصار هذا الكود بالكود الموجود بالاسفل كالتالي 
+        */}
+
+        <DrawerComponent {...{drawerWidth, setMode, noneORblock, drawerType, hideDrawer}} />
 
         <AppBarComponent 
           drawerWidth={drawerWidth}

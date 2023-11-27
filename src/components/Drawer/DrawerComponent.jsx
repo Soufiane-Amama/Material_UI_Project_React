@@ -6,7 +6,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useLocation, useNavigate } from "react-router-dom";
-import { IconButton, ListItemIcon } from "@mui/material";
+import { Box, IconButton, ListItemIcon } from "@mui/material";
 // Dark Mode
 import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -20,7 +20,8 @@ const DrawerComponent = ({ drawerWidth, setMode, noneORblock, drawerType, hideDr
   const select = useLocation();
 
   return (
-    <Drawer
+    <Box component="nav">
+      <Drawer
       sx={{
         display: {xs: noneORblock, sm: "block"},
         width: `${drawerWidth}px`,
@@ -81,7 +82,8 @@ const DrawerComponent = ({ drawerWidth, setMode, noneORblock, drawerType, hideDr
           </ListItemButton>
         </ListItem>
       </List>
-    </Drawer>
+      </Drawer>
+    </Box>
   );
 };
 

@@ -18,8 +18,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 
 const Create = () => {
-  const [title, settitle] = useState("");
-  const [price, setprice] = useState(0);
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState(0);
 
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ const Create = () => {
     <Box autoComplete="off" component="form" sx={{width: "380px"}}>
         <TextField
           onChange={(e) => {
-            settitle(e.target.value);
+            setTitle(e.target.value);
           }}
           fullWidth={true}
           label="Transaction Title"
@@ -41,7 +41,7 @@ const Create = () => {
 
         <TextField
           onChange={(e) => {
-            setprice(Number(e.target.value));
+            setPrice(Number(e.target.value));
           }}
           fullWidth={true}
           label="Amount"
@@ -54,7 +54,7 @@ const Create = () => {
 
 <ColorButton 
   onClick={()=>{
-    fetch("http://localhost:3100/mydata", {
+    fetch("http://localhost:3100/myData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

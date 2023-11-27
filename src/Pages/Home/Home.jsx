@@ -4,24 +4,24 @@ import { Box, Paper, Typography, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [mydata, setMydata] = useState([]);
+  const [myData, setMyData] = useState([]);
 
   useEffect(()=>{
-      fetch("http://localhost:3100/mydata")
+      fetch("http://localhost:3100/myData")
       .then((response) => response.json())
-      .then((data) => setMydata(data));
+      .then((data) => setMyData(data));
   }, []);
 
   const handleDelete = (item) => {
-    fetch(`http://localhost:3100/mydata/${item.id}`, {
+    fetch(`http://localhost:3100/myData/${item.id}`, {
       method: "DELETE",
     });
 
-    const newArr = mydata.filter((myObject) => {
+    const newArr = myData.filter((myObject) => {
       return myObject.id !== item.id;
     });
 
-    setMydata(newArr);
+    setMyData(newArr);
   }
 
 
@@ -30,14 +30,14 @@ const Home = () => {
   return (
     <Box>
       { 
-        mydata.length ===  0 ? 
+        myData.length ===  0 ? 
         <div className="loader">
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
         </div> 
         :
-        mydata.map(item =>{ 
+        myData.map(item =>{ 
           totalPrice += item.price;
           return (
           <Paper
@@ -84,7 +84,7 @@ const Home = () => {
       }
 
       {
-        mydata.length > 0 &&
+        myData.length > 0 &&
         <Typography mt="55px" textAlign="center" variant="h6">
         👉 You Spend ${totalPrice}
         </Typography>
